@@ -33,7 +33,6 @@ export class AuthenticationService {
         this.httpOptions = 
             new HttpHeaders(
               {'Content-Type': 'application/json',
-               //'Authorization': 'Basic ***REMOVED***'
                'Authorization': 'Basic '+btoa(username+':'+password)
               }
             );
