@@ -1,0 +1,106 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<div *ngIf="!entity" class="loader"></div>
+<div *ngIf="entity">
+    <h1 *ngIf="entity">({{entity.classificationMarking}}) {{entity.commonName | uppercase}} Details</h1>
+    <h2>Meta</h2>
+    <ul>
+        <li *ngIf="entity.id">ID: {{entity.id}}</li>
+        <li *ngIf="entity.createdAt">Created At: {{entity.createdAt}}</li>
+        <li *ngIf="entity.createdBy">Created By: {{entity.createdBy}}</li>
+        <li *ngIf="entity.updatedAt">Created Updated At: {{entity.updatedAt}}</li>
+        <li *ngIf="entity.updatedBy">Created Updated By: {{entity.updatedBy}}</li>
+        <li *ngIf="entity.source">Created Source: {{entity.source}}</li>
+        <li *ngIf="entity.dataMode">Data Mode: {{entity.dataMode}}</li>
+      </ul>
+
+    <app-entity></app-entity>
+
+
+
+    <h2 *ngIf="entity.thrusters.length">Engines</h2>
+    <div *ngIf="entity.thrusters.length" class="wrapper" >
+      <div *ngFor="let thruster of entity.thrusters | keyvalue">
+          <a routerLink="/SOB/detail/engine/{{thruster.value.idEngine}}">
+
+        <div class="card">
+          <h3>{{thruster.value.engine.name}}</h3>
+            <p>ID:{{thruster.value.idEngine}}</p>
+            <p>Count:{{thruster.value.quantity}}</p>
+            <i>{{thruster.value.classificationMarking}}</i>
+        </div>
+        </a>
+      </div>
+    </div>
+    
+    <h2 *ngIf="entity.antennas.length">Antennas</h2>
+    <div *ngIf="entity.antennas.length" class="wrapper" >
+      <div *ngFor="let antenna of entity.antennas | keyvalue">
+        <div class="card">
+          <h3>{{antenna.value.antenna.name}}</h3>
+            <p>ID:{{antenna.value.idAntenna}}</p>
+            <i>{{antenna.value.classificationMarking}}</i>
+        </div>
+      </div>
+    </div>
+
+
+    <h2 *ngIf="entity.batteries.length">Batteries</h2>
+    <div *ngIf="entity.batteries.length" class="wrapper" >
+      <div  *ngFor="let battery of entity.batteries | keyvalue">
+        <div class="card">
+          <h3>{{battery.value.battery.name}}</h3>
+            <p>ID:{{battery.value.idBattery}}</p>
+            <i>{{battery.value.classificationMarking}}</i>
+        </div>
+      </div>
+    </div>
+    
+    <h2  *ngIf="entity.solarArrays.length">SolarArrays</h2>
+    <div *ngIf="entity.solarArrays.length" class="wrapper" >
+
+      <div  *ngFor="let solarArray of entity.solarArrays | keyvalue">
+        <div class="card">
+          <h3>{{solarArray.value.solarArray.name}}</h3>
+            <p>ID:{{solarArray.value.idSolarArray}}</p>
+            <i>{{solarArray.value.classificationMarking}}</i>
+        </div>
+      </div>
+    </div>
+    
+    <h2 *ngIf="entity.entityCollection.length">Other Components</h2>
+    <div *ngIf="entity.entityCollection.length" class="wrapper" >
+      <div *ngFor="let component of entity.entityCollection | keyvalue">
+          <a routerLink="/SOB/detail/{{component.value.type}}/{{component.value.idEntity}}">
+        <div class="card">
+          <h3>{{component.value.name}}</h3>
+            <p>ID:{{component.value.idEntity}}</p>
+            <p>Type:{{component.value.type}}</p>
+            <i>{{component.value.classificationMarking}}</i>
+        </div>
+        </a>
+      </div>
+    </div>
+
+    <h2 *ngIf="entity.onorbitDetails.length">On Orbit Details</h2>
+    <div *ngIf="entity.onorbitDetails.length" class="wrapper" >
+    <div  *ngFor="let component of entity.onorbitDetails | keyvalue">
+      <div class="card">
+        <h3>{{component.value.source}}</h3>
+        <div *ngFor="let item of component.value | keyvalue">
+        <p *ngIf="!(item.key==='classificationMarking'||item.key==='createdAt'
+        ||item.key==='createdBy'||item.key==='dataMode'||item.key==='id'||item.key==='idOnOrbit')">{{item.key}}:{{item.value}}</p>
+        </div>
+    
+        <i>{{component.value.classificationMarking}}</i>
+      </div>
+    </div>
+  </div>
+     
+</div>
+<h2>Signatures</h2>
+<app-plotvizmag></app-plotvizmag>
+<app-tlevisualizer></app-tlevisualizer>
+<button (click)="goBack()">go back</button>
+
+
+

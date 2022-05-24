@@ -1,0 +1,62 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<div *ngIf="!entity" class="loader"></div>
+<div *ngIf="entity">
+<h1 *ngIf="entity">({{entity.classificationMarking}}) {{entity.name | uppercase}} Details</h1>
+<h2>Meta</h2>
+<ul>
+    <li *ngIf="entity.id">ID: {{entity.id}}</li>
+    <li *ngIf="entity.createdAt">Created At: {{entity.createdAt}}</li>
+    <li *ngIf="entity.createdBy">Created By: {{entity.createdBy}}</li>
+    <li *ngIf="entity.updatedAt">Created Updated At: {{entity.updatedAt}}</li>
+    <li *ngIf="entity.updatedBy">Created Updated By: {{entity.updatedBy}}</li>
+    <li *ngIf="entity.source">Created Source: {{entity.source}}</li>
+    <li *ngIf="entity.dataMode">Data Mode: {{entity.dataMode}}</li>
+</ul>
+
+<div *ngIf="entity.engineDetails.length" class="row" >
+    <h2>Additional Info</h2>
+    <div class="column" *ngFor="let info of entity.engineDetails | keyvalue">
+    <div class="card">
+      <h3>{{info.value.source}}</h3>
+        <ul>
+          <li *ngIf="info.value.family">Family: {{info.value.family}}</li>
+          <li *ngIf="info.value.cycleType">Cycle Type: {{info.value.cycleType}}</li>
+         <li *ngIf="info.value.characteristicType">Characteristic Type: {{info.value.characteristicType}}</li>
+         <li *ngIf="info.value.manufacturerOrgId">ManufacturerOrg: {{info.value.manufacturerOrgId}}</li>
+         <li *ngIf="info.value.specificImpulse">Specific Impulse: {{info.value.specificImpulse}}</li>
+         <li *ngIf="info.value.burnTime">Burn Time: {{info.value.burnTime}}</li>
+         <li *ngIf="info.value.seaLevelThrust">Sea Level Thrust: {{info.value.seaLevelThrust}}</li>
+         <li *ngIf="info.value.vacuumThrust">Vacuum Thrust: {{info.value.vacuumThrust}}</li>
+         <li *ngIf="info.value.chamberPressure">Chamber Pressure: {{info.value.chamberPressure}}</li>
+         <li *ngIf="info.value.nozzleExpansionRatio">Nozzle Expansion Ratio: {{info.value.nozzleExpansionRatio}}</li>
+         <li *ngIf="info.value.maxFirings">Max Firings: {{info.value.maxFirings}}</li>
+         <li *ngIf="info.value.propellant">Propellant: {{info.value.propellant}}</li>
+         <li *ngIf="info.value.oxidizer">Oxidizer: {{info.value.oxidizer}}</li>
+         <h4 *ngIf="info.value.notes">Notes</h4>
+         <p *ngIf="info.value.notes">{{info.value.notes}}</p>
+        </ul>
+
+          <span class="tooltiptext">
+            <ul>
+                <li *ngIf="info.value.id">ID:{{info.value.id}}</li>
+                <li *ngIf="info.value.idEngine">Engine ID:{{info.value.idEngine}}</li>
+                <li *ngIf="info.value.createdAt">Created At: {{info.value.createdAt}}</li>
+                <li *ngIf="info.value.createdBy">Created By: {{info.value.createdBy}}</li>
+                <li *ngIf="info.value.createdAt">Updated At: {{info.value.createdAt}}</li>
+                <li *ngIf="info.value.updatedBy">Updated By: {{info.value.updatedBy}}</li>
+                <li *ngIf="info.value.source">Source: {{info.value.source}}</li>
+                <li *ngIf="info.value.dataMode">Data Mode: {{info.value.dataMode}}</li>
+                <li *ngIf="info.value.tags">tags: string[]</li>
+
+            </ul>
+
+
+
+
+          </span>
+    </div>
+  </div>
+</div>
+
+</div>
+<button (click)="goBack()">go back</button>

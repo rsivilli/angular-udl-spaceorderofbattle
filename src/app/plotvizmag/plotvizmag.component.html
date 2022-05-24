@@ -1,0 +1,4 @@
+<div *ngIf="!chartVizMag" class="loader"></div>
+<div [hidden]="!chartVizMag">
+    <canvas id="canvas">{{ chartVizMag }}</canvas>
+  </div>

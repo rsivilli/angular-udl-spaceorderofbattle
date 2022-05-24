@@ -1,0 +1,106 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<div *ngIf="!entity" class="loader"></div>
+<div *ngIf="entity">
+
+<h2>Information</h2>
+<ul>
+  <li *ngIf="entity.terrestrialId">Terrestrial ID:{{entity.terrestrialId}}</li>
+  <li *ngIf="entity.type">Type:{{entity.type}}</li>
+  <li *ngIf="entity.idLocation">Location ID: {{entity.idLocation}}</li>
+  <li *ngIf="entity.countryCode">Country Code: {{entity.countryCode}}</li>
+  <li *ngIf="entity.ownerType">Owner Type: {{entity.ownerType}}</li>
+  <li *ngIf="entity.taskable">Taskable: {{entity.taskable}}</li>
+  <li *ngIf="entity.location">Location: {{entity.location}}</li>
+  <li *ngIf="entity.idOnOrbit">On Orbit ID:<a routerLink="/SOB/detail/ONORBIT/{{entity.idOnOrbit}}">{{entity.idOnOrbit}}</a></li>
+  <li *ngIf="entity.Operating Unit">Operating Unit:{{entity.operatingUnit}}</li>
+  <li *ngIf="entity.idOperatingUnit">Operating Unit:{{entity.idOperatingUnit}}</li>
+  </ul>
+  
+<h2 *ngIf="entity.statusCollection.length">Collection Status</h2>
+<div *ngIf="entity.statusCollection.length" class="wrapper" >
+    <div  *ngFor="let info of entity.statusCollection | keyvalue">
+    <div class="card">
+      <h3>{{info.value.source}}</h3>
+       
+      <ul>
+          <li *ngIf="info.value.statusCollection">Collection Status: {{info.value.statusCollection}}</li>
+          <li *ngIf="info.value.sysCap">System Capability: {{info.value.sysCap}}</li>
+          <li *ngIf="info.value.opsCap">Operational Capability: {{info.value.opsCap}}</li>
+         </ul>
+
+          <span class="tooltiptext">
+            <ul>
+                <li *ngIf="info.value.id">ID:{{info.value.id}}</li>
+                <li *ngIf="info.value.idEntity">Engine ID:{{info.value.idEntity}}</li>
+                <li *ngIf="info.value.createdAt">Created At: {{info.value.createdAt}}</li>
+                <li *ngIf="info.value.createdBy">Created By: {{info.value.createdBy}}</li>
+                <li *ngIf="info.value.createdAt">Updated At: {{info.value.createdAt}}</li>
+                <li *ngIf="info.value.updatedBy">Updated By: {{info.value.updatedBy}}</li>
+                <li *ngIf="info.value.source">Source: {{info.value.source}}</li>
+                <li *ngIf="info.value.dataMode">Data Mode: {{info.value.dataMode}}</li>
+                <li *ngIf="info.value.classificationMarking">Classification:{{info.value.classificationMarking}}</li>
+            </ul>
+          </span>
+
+    </div>
+  </div>
+</div>
+
+<div *ngIf="entity.rfBands.length">
+<h2 > Operating RF Bands </h2> 
+<button (click)="whoCanInterfere()">Who Can Interfere</button>
+<button (click)="whoCanInterfere()">Who Can I Interfere With</button>
+
+</div>
+<div *ngIf="entity.rfBands.length" class="wrapper" >
+    <div  *ngFor="let info of entity.rfBands | keyvalue">
+      
+    <div class="card" (click)="whatCanThisInterfereWith(info.value.centerFreq)">
+       
+      <ul>
+          <li *ngIf="info.value.name">Name: {{info.value.name}}</li>
+          <li *ngIf="info.value.band">Band: {{info.value.band}}</li>
+          <li *ngIf="info.value.mode">Mode: {{info.value.mode}}</li>
+          <li *ngIf="info.value.purpose">Purpose: {{info.value.purpose}}</li>
+          <li *ngIf="info.value.freqMin">Min Frequency: {{info.value.freqMin}}</li>
+          <li *ngIf="info.value.freqMax">Max Frequency: {{info.value.freqMax}}</li>
+          <li *ngIf="info.value.centerFreq">Center Frequency: {{info.value.centerFreq}}</li>
+          <li *ngIf="info.value.peakGain">Peak Gain: {{info.value.peakGain}}</li>
+          <li *ngIf="info.value.edgeGain">Edge Gain: {{info.value.edgeGain}}</li>
+          <li *ngIf="info.value.bandwidth">Bandwidth: {{info.value.bandwidth}}</li>
+          <li *ngIf="info.value.beamwidth">Beamwidth: {{info.value.beamwidth}}</li>
+          <li *ngIf="info.value.polarization">Polarization: {{info.value.polarization}}</li>
+          <li *ngIf="info.value.erp">ERP: {{info.value.erp}}</li>
+          <li *ngIf="info.value.eirp">EIRP: {{info.value.eirp}}</li>
+         </ul>
+
+          <span class="tooltiptext">
+            <ul>
+                <li *ngIf="info.value.id">ID:{{info.value.id}}</li>
+                <li *ngIf="info.value.idEntity">Engine ID:{{info.value.idEntity}}</li>
+                <li *ngIf="info.value.createdAt">Created At: {{info.value.createdAt}}</li>
+                <li *ngIf="info.value.createdBy">Created By: {{info.value.createdBy}}</li>
+                <li *ngIf="info.value.createdAt">Updated At: {{info.value.createdAt}}</li>
+                <li *ngIf="info.value.updatedBy">Updated By: {{info.value.updatedBy}}</li>
+                <li *ngIf="info.value.source">Source: {{info.value.source}}</li>
+                <li *ngIf="info.value.dataMode">Data Mode: {{info.value.dataMode}}</li>
+                <li *ngIf="info.value.classificationMarking">Classification:{{info.value.classificationMarking}}</li>
+            </ul>
+          </span>
+        
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="entity.url">
+    <h2>Links</h2>
+    <ul>
+      <li *ngFor="let link of entity.urls">
+        {{link.value}}
+      </li>
+    </ul>
+</div>
+
+
+</div>

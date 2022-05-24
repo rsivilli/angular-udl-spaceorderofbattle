@@ -1,0 +1,14 @@
+
+<body>
+<div class="split entities">
+    <h1>Object List</h1>
+    <div *ngIf="!entities" class="loader"></div>
+  <ul id="grid">
+  <li *ngFor="let entity of entities">
+      <a class ="hexagon"routerLink="/SOB/detail/ONORBIT/{{entity.idOnOrbit}}">
+        <p> {{entity.commonName}} </p>>
+      </a>
+  </li>
+</ul>
+</div>
+</body>

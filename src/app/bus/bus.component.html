@@ -1,0 +1,52 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<div *ngIf="!entity" class="loader"></div>
+<div *ngIf="entity">
+<h1 *ngIf="entity">({{entity.classificationMarking}}) {{entity.name | uppercase}} Details</h1>
+<h2>Meta</h2>
+<ul>
+  <li *ngIf="entity.id">ID: {{entity.id}}</li>
+  <li *ngIf="entity.createdAt">Created At: {{entity.createdAt}}</li>
+  <li *ngIf="entity.createdBy">Created By: {{entity.createdBy}}</li>
+  <li *ngIf="entity.updatedAt">Created Updated At: {{entity.updatedAt}}</li>
+  <li *ngIf="entity.updatedBy">Created Updated By: {{entity.updatedBy}}</li>
+  <li *ngIf="entity.source">Created Source: {{entity.source}}</li>
+  <li *ngIf="entity.dataMode">Data Mode: {{entity.dataMode}}</li>
+</ul>
+
+<h2>Bus Info</h2>
+
+<li *ngIf="entity.type">type: {{entity.type}}</li>
+<li *ngIf="entity.maxLaunchMassLower">maxLaunchMassLower: {{entity.maxLaunchMassLower}}</li>
+<li *ngIf="entity.maxLaunchMassUpper">maxLaunchMassUpper: {{entity.maxLaunchMassUpper}}</li>
+<li *ngIf="entity.maxBOLStationMass">maxBOLStationMass: {{entity.maxBOLStationMass}}</li>
+<li *ngIf="entity.maxBOLPowerLower">maxBOLPowerLower: {{entity.maxBOLPowerLower}}</li>
+<li *ngIf="entity.maxBOLPowerUpper">maxBOLPowerUpper: {{entity.maxBOLPowerUpper}}</li>
+<li *ngIf="entity.maxEOLPowerLower">maxEOLPowerLower: {{entity.maxEOLPowerLower}}</li>
+<li *ngIf="entity.maxEOLPowerUpper">maxEOLPowerUpper: {{entity.maxEOLPowerUpper}}</li>
+<li *ngIf="entity.bodyDimensionX">bodyDimensionX: {{entity.bodyDimensionX}}</li>
+<li *ngIf="entity.bodyDimensionY">bodyDimensionY: {{entity.bodyDimensionY}}</li>
+<li *ngIf="entity.bodyDimensionZ">bodyDimensionZ: {{entity.bodyDimensionZ}}</li>
+<li *ngIf="entity.launchEnvelopeDimensionX">launchEnvelopeDimensionX: {{entity.launchEnvelopeDimensionX}}</li>
+<li *ngIf="entity.launchEnvelopeDimensionY">launchEnvelopeDimensionY: {{entity.launchEnvelopeDimensionY}}</li>
+<li *ngIf="entity.launchEnvelopeDimensionZ">launchEnvelopeDimensionZ: {{entity.launchEnvelopeDimensionZ}}</li>
+<li *ngIf="entity.maxPayloadMass">maxPayloadMass: {{entity.maxPayloadMass}}</li>
+<li *ngIf="entity.maxPayloadPower">maxPayloadPower: {{entity.maxPayloadPowerd}}</li>
+<li *ngIf="entity.telemetryTrackingManufacturerOrgId">telemetryTrackingManufacturerOrgId: {{entity.telemetryTrackingManufacturerOrgId}}</li>
+<li *ngIf="entity.mainComputerManufacturerOrgId">mainComputerManufacturerOrgId: {{entity.mainComputerManufacturerOrgId}}</li>
+<li *ngIf="entity.manufacturerOrgId">manufacturerOrgId: {{entity.manufacturerOrgId}}</li>
+<li *ngIf="entity.busKitDesignerOrgId">busKitDesignerOrgId: {{entity.busKitDesignerOrgId}}</li>
+<li *ngIf="entity.massCategory">massCategory: {{entity.massCategory}}</li>
+<li *ngIf="entity.powerCategory">powerCategory: {{entity.powerCategory}}</li>
+<li *ngIf="entity.generic">generic: {{entity.generic}}</li>
+<li *ngIf="entity.description">description: {{entity.description}}</li>
+<li *ngIf="entity.aocsNotes">aocsNotes: {{entity.aocsNotes}}</li>
+        
+ 
+
+<app-entity></app-entity>
+
+
+
+</div>
+<button (click)="goToSatellites()">Satellites with this Bus</button>
+<button (click)="goBack()">go back</button>

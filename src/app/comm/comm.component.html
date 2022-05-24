@@ -1,0 +1,90 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<div *ngIf="!entity" class="loader"></div>
+<div *ngIf="entity">
+<h1 *ngIf="entity">({{entity.classificationMarking}}) {{entity.name | uppercase}} Details</h1>
+<h2>Meta</h2>
+<ul>
+  <li *ngIf="entity.id">ID: {{entity.id}}</li>
+  <li *ngIf="entity.createdAt">Created At: {{entity.createdAt}}</li>
+  <li *ngIf="entity.createdBy">Created By: {{entity.createdBy}}</li>
+  <li *ngIf="entity.updatedAt">Created Updated At: {{entity.updatedAt}}</li>
+  <li *ngIf="entity.updatedBy">Created Updated By: {{entity.updatedBy}}</li>
+  <li *ngIf="entity.source">Created Source: {{entity.source}}</li>
+  <li *ngIf="entity.dataMode">Data Mode: {{entity.dataMode}}</li>
+</ul>
+
+<app-entity></app-entity>
+
+
+
+<h2 *ngIf="entity.transponders.length">Transponders</h2>
+<div *ngIf="entity.transponders.length" class="wrapper" >
+    <div *ngFor="let info of entity.transponders | keyvalue">
+    <div class="card">
+      <h3>{{info.value.name}}</h3>
+        <ul>
+         <li *ngIf="info.value.nid">NID: {{info.value.nid}}</li>
+         <li *ngIf="info.value.tid">TID: {{info.value.tid}}</li>
+         <li *ngIf="info.value.ttf">TTF: {{info.value.ttf}}</li>
+         <li *ngIf="info.value.symbolRate">Symbol Rate: {{info.value.symbolRate}}</li>
+         <li *ngIf="info.value.fec">FEC: {{info.value.fec}}</li>
+         <li *ngIf="info.value.modulation">Modulation: {{info.value.modulation}}</li>
+         <li *ngIf="info.value.format">Format: {{info.value.format}}</li>
+         <li *ngIf="info.value.system">System: {{info.value.system}}</li>
+        </ul>
+        <span class="tooltiptext">
+          <ul>
+              <li *ngIf="info.value.id">ID:{{info.value.id}}</li>
+              <li *ngIf="info.value.idEngine">Comm ID:{{info.value.idComm}}</li>
+              <li *ngIf="info.value.createdAt">Created At: {{info.value.createdAt}}</li>
+              <li *ngIf="info.value.createdBy">Created By: {{info.value.createdBy}}</li>
+              <li *ngIf="info.value.createdAt">Updated At: {{info.value.createdAt}}</li>
+              <li *ngIf="info.value.updatedBy">Updated By: {{info.value.updatedBy}}</li>
+              <li *ngIf="info.value.source">Source: {{info.value.source}}</li>
+              <li *ngIf="info.value.dataMode">Data Mode: {{info.value.dataMode}}</li>
+              <li *ngIf="info.value.tags">Tags: {{info.value.tags}}</li>
+              <li *ngIf="info.value.classificationMarking">{{info.value.classificationMarking}}</li>
+
+          </ul>
+          </span>
+
+    </div>
+  </div>
+</div>
+<h2 *ngIf="entity.transponders.length">Channels</h2>
+<div *ngIf="entity.transponders.length"  class="wrapper2">
+    <div *ngFor="let channel of getChannels() | keyvalue">
+    <div class="card">
+      <h3>{{channel.value.name}}</h3>
+        <ul>
+         <li *ngIf="channel.value.type">Type: {{channel.value.type}}</li>
+         <li *ngIf="channel.value.beamId">Beam ID: {{channel.value.beamId}}</li>
+         <li *ngIf="channel.value.idRFBand">RF Band: {{channel.value.idRFBand}}</li>
+         <li *ngIf="channel.value.encryption">Encryption: {{channel.value.encryption}}</li>
+         <li *ngIf="channel.value.pkg">PKG: {{channel.value.pkg}}</li>
+         <li *ngIf="channel.value.res">RES: {{channel.value.res}}</li>
+         <li *ngIf="channel.value.compression">Compression: {{channel.value.compression}}</li>
+         <li *ngIf="channel.value.vpid">VPID: {{channel.value.vpid}}</li>
+         <li *ngIf="channel.value.apid">APID: {{channel.value.apid}}</li>
+         <li *ngIf="channel.value.sid">SID: {{channel.value.sid}}</li>
+        </ul>
+        <span class="tooltiptext">
+          <ul>
+              <li *ngIf="channel.value.id">ID:{{channel.value.id}}</li>
+              <li *ngIf="channel.value.idEngine">Comm ID:{{channel.value.idTransponder}}</li>
+              <li *ngIf="channel.value.createdAt">Created At: {{channel.value.createdAt}}</li>
+              <li *ngIf="channel.value.createdBy">Created By: {{channel.value.createdBy}}</li>
+              <li *ngIf="channel.value.createdAt">Updated At: {{channel.value.createdAt}}</li>
+              <li *ngIf="channel.value.updatedBy">Updated By: {{channel.value.updatedBy}}</li>
+              <li *ngIf="channel.value.source">Source: {{channel.value.source}}</li>
+              <li *ngIf="channel.value.dataMode">Data Mode: {{channel.value.dataMode}}</li>
+              <li *ngIf="channel.value.tags">tags:{{channel.value.tags}}</li>
+              <li *ngIf="channel.value.tags">tags:{{channel.value.tags}}</li>
+          </ul>
+          </span>
+    </div>
+  </div>
+</div>
+
+</div>
+<button (click)="goBack()">go back</button>

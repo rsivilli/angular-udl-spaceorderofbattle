@@ -1,0 +1,5 @@
+<nav *ngIf="isLoggedIn()">
+    <a class="nav-item nav-link" routerLink="/entities">Entities List</a>
+    <a class="nav-item nav-link logout-link" (click)="logout()">Logout</a>
+</nav>
+<router-outlet></router-outlet>
